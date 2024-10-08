@@ -25,17 +25,16 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "../state"; // Ensure this path is correct
 import { useNavigate } from "react-router-dom";
-import FlexBetween from "../components/FlexBetween";
+import FlexBetween from "./FlexBetween";
 import Logo from "../assets/chatterbox.png"; // Ensure this path is correct
 
-const navbar = () => {
+const Navbar = () => { // Renamed to Navbar
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user); // Ensure 'user' is correctly structured in your Redux store
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
@@ -187,4 +186,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar; // Updated export statement

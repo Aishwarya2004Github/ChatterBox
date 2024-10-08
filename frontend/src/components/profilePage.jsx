@@ -1,21 +1,22 @@
-
-
 import { Box, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/navbar";
-import FriendList from "../components/FriendList";
-import MyPost from "../components/MyPost";
-import Posts from "../components/Posts";
-import User from "../components/User";
+import Navbar from "./Navbar";
+import FriendList from "./FriendList";
+import MyPost from "./MyPost";
+import Posts from "./Posts";
+import User from "./User";
 
-const profilePage = () => {
+const ProfilePage = () => { // Updated component name to ProfilePage
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-
+  const { id } = useParams();
+  const profileData = useSelector(state => state.profile[id]);
+  const isMobile = useMediaQuery('(max-width:600px)');
+  
   const getUser = async () => {
     const response = await fetch(`http://localhost:5000/users/${userId}`, {
       method: "GET",
@@ -54,10 +55,9 @@ const profilePage = () => {
           <Box m="2rem 0" />
           <Posts userId={userId} isProfile />
         </Box>
-        
       </Box>
     </Box>
   );
 };
 
-export default profilePage;
+export default ProfilePage; // Exporting the renamed component

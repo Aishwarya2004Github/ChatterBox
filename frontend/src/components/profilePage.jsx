@@ -8,7 +8,7 @@ import MyPost from "./MyPost";
 import Posts from "./Posts";
 import User from "./User";
 
-const ProfilePage = () => {
+const profilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
@@ -65,4 +65,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage; // Correctly exported
+export default profilePage; // Correctly exported

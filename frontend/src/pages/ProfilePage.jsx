@@ -2,34 +2,34 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Navbar from "./Navbar";
-import FriendList from "./FriendList";
-import MyPost from "./MyPost";
-import Posts from "./Posts";
-import User from "./User";
+import Navbar from "../components/Navbar";
+import FriendList from "../components/FriendList";
+import MyPost from "../components/MyPost";
+import Posts from "../components/Posts";
+import User from "../components/User";
 
-const profilePage = () => {
+const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
   const getUser = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/users/${userId}`, {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      setUser(data);
-    } catch (error) {
-      console.error("Failed to fetch user data:", error);
+  try {
+    const response = await fetch(`http://localhost:5000/users/${userId}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
-  };
-  
+    const data = await response.json();
+    setUser(data);
+  } catch (error) {
+    console.error("Failed to fetch user data:", error);
+  }
+};
+
 
   useEffect(() => {
     getUser();
@@ -65,4 +65,4 @@ const profilePage = () => {
   );
 };
 
-export default profilePage; // Correctly exported
+export default ProfilePage; // Correctly exported

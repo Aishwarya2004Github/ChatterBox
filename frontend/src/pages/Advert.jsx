@@ -20,7 +20,7 @@ const Advert = () => { // Renamed to Advert
         width="100%"
         height="auto"
         alt="advert"
-        src="http://localhost:5000/assets/info42.jpeg"
+        src="https://chatterbox-g8d6.onrender.com/assets/info42.jpeg"
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
       <FlexBetween>

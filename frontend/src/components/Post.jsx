@@ -43,7 +43,7 @@ const Post = ({
 
   const handleLike = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/posts/${postId}/like`, {
+      const response = await fetch(`https://chatterbox-g8d6.onrender.com/posts/${postId}/like`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,7 +80,7 @@ const Post = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`http://localhost:5000/assets/${picturePath}`}
+          src={`https://chatterbox-g8d6.onrender.com/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">

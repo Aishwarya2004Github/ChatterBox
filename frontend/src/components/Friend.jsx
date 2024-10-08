@@ -28,7 +28,7 @@ const Friend = ({ friendId, UserName, subtitle, userPicturePath }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/users/${_id}/${friendId}`, {
+      const response = await fetch(`https://chatterbox-g8d6.onrender.com/users/${_id}/${friendId}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

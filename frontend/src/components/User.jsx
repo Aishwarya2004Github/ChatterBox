@@ -27,7 +27,7 @@ import {
   
     const getUser = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/users/${userId}`, {
+        const response = await fetch(`https://chatterbox-g8d6.onrender.com/users/${userId}`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -72,7 +72,7 @@ import {
       const updatedData = field === "location" ? { location: tempLocation } : { occupation: tempOccupation };
       
       try {
-        const response = await fetch(`http://localhost:5000/users/${userId}`, {
+        const response = await fetch(`https://chatterbox-g8d6.onrender.com/users/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

@@ -1,13 +1,13 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homepage";
 import LoginPage from "./pages/loginPage";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from './components/ProfilePage'; // Ensure this path is correct
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { themeSettings } from "./theme";
-import ButterflyBackground from './components/ButterflyBackground';
+import { themeSettings } from "./theme"; // Ensure this is correctly configured
+import ButterflyBackground from './components/ButterflyBackground'; // Ensure this path is correct
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -24,7 +24,6 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/" />} />
             <Route path="/profile/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/" />} />
-            {/* Optional: Add a fallback route for unmatched paths */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </ThemeProvider>

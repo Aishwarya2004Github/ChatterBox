@@ -8,27 +8,32 @@ import MyPost from "./MyPost";
 import Posts from "./Posts";
 import User from "./User";
 
-const ProfilePage = () => { // Updated component name to ProfilePage
+const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const { id } = useParams();
-  const profileData = useSelector(state => state.profile[id]);
-  const isMobile = useMediaQuery('(max-width:600px)');
-  
+
   const getUser = async () => {
-    const response = await fetch(`http://localhost:5000/users/${userId}`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await response.json();
-    setUser(data);
+    try {
+      const response = await fetch(`http://localhost:5000/users/${userId}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setUser(data);
+    } catch (error) {
+      console.error("Failed to fetch user data:", error);
+    }
   };
+  
 
   useEffect(() => {
     getUser();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [userId]); // Fetch data when userId changes
 
   if (!user) return null;
 
@@ -60,4 +65,4 @@ const ProfilePage = () => { // Updated component name to ProfilePage
   );
 };
 
-export default ProfilePage; // Exporting the renamed component
+export default ProfilePage; // Correctly exported

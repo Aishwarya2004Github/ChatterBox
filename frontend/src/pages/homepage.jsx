@@ -1,7 +1,7 @@
 import React, { useState } from "react"; // Import useState here
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 import { Box, useMediaQuery, Button, Dialog, DialogContent } from "@mui/material";
-import Advert from "../components/Advert";
+import Advert from "./Advert";
 import FriendList from "../components/FriendList";
 import User from "../components/User"; 
 import Post from "../components/Post";

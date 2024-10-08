@@ -25,7 +25,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "../state"; // Ensure this path is correct
 import { useNavigate } from "react-router-dom";
-import FlexBetween from "./FlexBetween";
+import FlexBetween from "../components/FlexBetween";
 import Logo from "../assets/chatterbox.png"; // Ensure this path is correct
 
 const Navbar = () => { // Renamed to Navbar
